@@ -9,29 +9,29 @@ from layoffs;
 SELECT MAX(total_laid_off)
 FROM world_layoffs.layoffs;
 
-*** Looking at Percentage to see how big these layoffs were
+---Looking at Percentage to see how big these layoffs were
 SELECT MAX(percentage_laid_off),  MIN(percentage_laid_off)
 FROM world_layoffs.layoffs
 WHERE  percentage_laid_off IS NOT NULL;
 
-***Which companies had 1 which is basically 100 percent of they company laid off
+---Which companies had 1 which is basically 100 percent of they company laid off
 SELECT *
 FROM world_layoffs.layoffs
 WHERE  percentage_laid_off = 1;
 
-***Let us  order by funds_raised_millions we can see how big some of these companies were
+---Let us  order by funds_raised_millions we can see how big some of these companies were
 SELECT *
 FROM world_layoffs.layoffs
 WHERE  percentage_laid_off = 1
 ORDER BY funds_raised_millions DESC;
 
-****Companies with single biggest layoffs on a single day
+---Companies with single biggest layoffs on a single day
 SELECT company, total_laid_off
 FROM world_layoffs.layoffs
 ORDER BY 2 DESC
 LIMIT 5;
 
-*** Companies with the most Total Layoffs
+--- Companies with the most Total Layoffs
 SELECT company, SUM(total_laid_off)
 FROM world_layoffs.layoffs
 GROUP BY company
@@ -39,7 +39,7 @@ ORDER BY 2 DESC
 LIMIT 10;
 
 
-*** by location
+--- by location
 SELECT location, SUM(total_laid_off)
 FROM world_layoffs.layoffs
 GROUP BY location
@@ -52,7 +52,7 @@ FROM world_layoffs.layoffs
 GROUP BY country
 ORDER BY 2 DESC;
 
-***Industry and total layoffs
+---Industry and total layoffs
 SELECT industry, SUM(total_laid_off)
 FROM world_layoffs.layoffs
 GROUP BY industry
